@@ -32,4 +32,4 @@ python cmspoc.py -t phpcms -s v960_sqlinject_getpasswd -u http://10.10.10.1:2500
 ## Script
 |  TYPE   | SCRIPT | DESCRIPTION  |
 | ------------- |:-------------:| -----:|
-| phpcms      | v960_sqlinject_getpasswd | phpcmsv9.6.0 wap模块 sql注入 |
+| phpcms      | v960_sqlinject_getpasswd | phpcmsv9.6.0 wap模块 sql注入 获取passwd|
