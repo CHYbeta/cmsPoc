@@ -1,4 +1,4 @@
-VERSION = "0.0.0.2"
+VERSION = "1.0.2"
 TYPE = "dev" if VERSION.count('.') > 2 and VERSION.split('.')[-1] != '0' else "stable"
 TYPE_COLORS = {"dev": 35, "stable": 90, "pip": 34}
 VERSION_STRING = "chybeta/%s#%s" % ('.'.join(VERSION.split('.')[:-1]) if VERSION.count('.') > 2 and VERSION.split('.')[-1] == '0' else VERSION, TYPE)
