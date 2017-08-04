@@ -11,7 +11,6 @@ def main():
 		target.update(cmdLineParser().__dict__)
 		banner()		
 		init()
-		
 		run(loadScripts())
 	except requests.exceptions.InvalidSchema as e:
 		print("\033[31m[!] Please input the right url.\033[0m\n")
