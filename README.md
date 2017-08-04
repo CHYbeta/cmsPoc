@@ -27,7 +27,7 @@ optional arguments:
 ```
 python cmspoc.py -t phpcms -s v960_sqlinject_getpasswd -u http://10.10.10.1:2500/phpcms960
 ```
-![](https://github.com/CHYbeta/chybeta.github.io/blob/master/images/pic/20170804/tty.gif?raw=true)
+![](https://github.com/CHYbeta/cmsPoc/blob/master/tty.gif?raw=true)
 
 ## Script
 |  TYPE   | SCRIPT | DESCRIPTION  |
