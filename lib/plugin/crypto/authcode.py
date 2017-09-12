@@ -44,7 +44,6 @@ class AuthCode(object):
         for i in xrange(256):
             rand_key.append(ord(crypt_key[i % len(crypt_key)]))
 
-
         box = range(256)
         j = 0
         for i in xrange(256):
