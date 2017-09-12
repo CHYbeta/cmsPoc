@@ -30,7 +30,7 @@ def poc():
 		text = requests.get(url,cookies=cookie).text
 		if adminpanel in text:
 			print("[+] Confirm: The website( {} ) is vulnerable".format(target.url))
-
+			
 		print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
 
 	except KeyError as e:		
