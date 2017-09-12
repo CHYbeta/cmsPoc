@@ -20,7 +20,6 @@ def main():
 		print("\033[31m[!] The network is busy.Connetion error!\033[0m\n")
 	except KeyboardInterrupt as e:
 		print("\033[31m[!] User aborted!\033[0m\n")
-	# print(target.url)
 
 
 if __name__ == "__main__":
