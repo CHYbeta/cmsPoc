@@ -33,3 +33,4 @@ python cmspoc.py -t phpcms -s v960_sqlinject_getpasswd -u http://10.10.10.1:2500
 |  TYPE   | SCRIPT | DESCRIPTION  |
 |:-------------:|:-------------:|:-----:|
 | phpcms      | v960_sqlinject_getpasswd | phpcmsv9.6.0 wap模块 sql注入 获取passwd|
+| icms| v701_sqlinject_getadmin | icmsv7.0.1 admincp.php sql注入 后台任意登陆| 
