@@ -32,5 +32,5 @@ python cmspoc.py -t phpcms -s v960_sqlinject_getpasswd -u http://10.10.10.1:2500
 ## Script
 |  TYPE   | SCRIPT | DESCRIPTION  |
 |:-------------:|:-------------:|:-----:|
-| phpcms      | v960_sqlinject_getpasswd | [phpcmsv9.6.0 wap模块 sql注入 获取passwd](https://chybeta.github.io/2017/08/04/%C2%96PHPCMS-v9-6-0-wap%E6%A8%A1%E5%9D%97sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/)|
-| icms| v701_sqlinject_getadmin | [icmsv7.0.1 admincp.php sql注入 后台任意登陆](https://chybeta.github.io/2017/09/12/ICMSv7-0-1-admincp-class-php-sql%E6%B3%A8%E5%85%A5%E5%88%86%E6%9E%90/)| 
+|phpcms| v960_sqlinject_getpasswd | [phpcmsv9.6.0 wap模块 sql注入 获取passwd](https://chybeta.github.io/2017/08/04/%C2%96PHPCMS-v9-6-0-wap%E6%A8%A1%E5%9D%97sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/)|
+|icms| v701_sqlinject_getadmin | [icmsv7.0.1 admincp.php sql注入 后台任意登陆](https://chybeta.github.io/2017/09/12/ICMSv7-0-1-admincp-class-php-sql%E6%B3%A8%E5%85%A5%E5%88%86%E6%9E%90/)|
