@@ -36,7 +36,7 @@ python cmspoc.py -t phpcms -s v960_sqlinject_getpasswd -u http://10.10.10.1:2500
 |phpcms| v960_sqlinject_getpasswd | [phpcmsv9.6.0 wap模块 sql注入 获取passwd](https://chybeta.github.io/2017/08/04/%C2%96PHPCMS-v9-6-0-wap%E6%A8%A1%E5%9D%97sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/)|
 |icms| v701_sqlinject_getadmin | [icmsv7.0.1 admincp.php sql注入 后台任意登陆](https://chybeta.github.io/2017/09/12/ICMSv7-0-1-admincp-class-php-sql%E6%B3%A8%E5%85%A5%E5%88%86%E6%9E%90/)|
 |discuz| v34_delete_arbitary_files | [discuz ≤ v3.4 任意文件删除](https://chybeta.github.io/2017/10/15/DiscuzX-v3-4-%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%88%A0%E9%99%A4%E6%BC%8F%E6%B4%9E/)|
-|beecms| v40_fileupload_getshell | beecms 文件上传漏洞|
+|beecms| v40_fileupload_getshell | beecms ≤ V4.0_R_20160525 文件上传漏洞|
 
 # Legal Disclaimer
 本项目仅供教育和学习交流使用，请勿用于非法用途恶意攻击，否则后果作者概不负责。
