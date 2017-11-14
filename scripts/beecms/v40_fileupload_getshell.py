@@ -4,7 +4,6 @@ import requests
 import re
 def poc():
 	try:
-		proxy = {'http':'http://10.10.10.128:8080'}
 		if  not target.url.endswith("index.php"):
 			print("[*] Please make sure the url end with 'index.php'")
 			exit()
