@@ -20,18 +20,18 @@ optional arguments:
 ```
 
 参数说明：
-- -t：指定cms的类型
-- -s：指定要载入的POC脚本
-- -u：指定目标cms
+- -t：指定cms的类型，比如 -t phpcms
+- -s：指定要载入的POC脚本，比如 -s v960_sqlinject_getpasswd
+- -u：指定目标cms，比如 -u http://vuln/index.php
+
+## Script
+完整脚本列表请见：[cmsPoc：Wiki](https://github.com/CHYbeta/cmsPoc/wiki/Scripts)
 
 ## Examples
 ```
 python cmspoc.py -t phpcms -s v960_sqlinject_getpasswd -u http://10.10.10.1:2500/phpcms960
 ```
 ![](https://github.com/CHYbeta/cmsPoc/blob/master/tty.gif?raw=true)
-
-## Script
-完整脚本列表请见：[cmsPoc：Wiki](https://github.com/CHYbeta/cmsPoc/wiki/Scripts)
 
 # Legal Disclaimer
 本项目仅供教育和学习交流使用，请勿用于非法用途恶意攻击，否则后果作者概不负责。
