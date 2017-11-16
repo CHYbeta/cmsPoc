@@ -28,6 +28,7 @@ optional arguments:
 完整脚本列表请见：[cmsPoc：Wiki](https://github.com/CHYbeta/cmsPoc/wiki/Scripts)
 
 目前poc数量较少，这里列出一部分，以后持续更新。
+
 |  TYPE   | SCRIPT | DESCRIPTION  |
 |:-------------:|:-------------:|:-----:|
 |phpcms| v960_sqlinject_getpasswd | [phpcmsv9.6.0 wap模块 sql注入 获取passwd](https://chybeta.github.io/2017/08/04/%C2%96PHPCMS-v9-6-0-wap%E6%A8%A1%E5%9D%97sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/)|
