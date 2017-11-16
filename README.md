@@ -37,7 +37,7 @@ optional arguments:
 |beecms| v40_fileupload_getshell | beecms ≤ V4.0_R_20160525 文件上传漏洞|
 |semcms| v23_sqlinject_getadmin | semcms ≤ V2.3 sql注入 后台任意登陆|
 |joomla| v370_sqlinject_getuser | [Joomla v3.7.0 sql注入 com_fields组件](https://chybeta.github.io/2017/05/19/CVE-2017-8917-Joomla-3-7-0-SQL-Injection%E5%88%86%E6%9E%90/)|
-|drupal| v833_yamlseria_getshell | Drupal ≤ v8.3.3 yaml反序列化 远程命令执行漏洞|
+|drupal| v833_yamlseria_getphpinfo | Drupal ≤ v8.3.3 yaml反序列化 远程命令执行漏洞|
 
 
 ## Examples
