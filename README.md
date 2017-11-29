@@ -26,6 +26,7 @@ optional arguments:
 
 ## Script
 完整脚本列表请见：[cmsPoc：Wiki](https://github.com/CHYbeta/cmsPoc/wiki/Scripts)
+For more scripts,you can see here: [cmsPoc：Wiki](https://github.com/CHYbeta/cmsPoc/wiki/Scripts)
 
 目前poc数量较少，这里列出一部分，以后持续更新。
 
