@@ -45,7 +45,7 @@ For more scripts,you can see here: [cmsPoc：Wiki](https://github.com/CHYbeta/cm
 ```
 python cmspoc.py -u http://127.0.0.1/beecms/inex.php -t beecms -s v40_fileupload_getshell
 ```
-![](https://github.com/CHYbeta/cmsPoc/blob/master/tty.gif?raw=true)
+![](https://github.com/CHYbeta/cmsPoc/blob/master/example.gif?raw=true)
 
 # Legal Disclaimer
 本项目仅供教育和学习交流使用，请勿用于非法用途恶意攻击，否则后果作者概不负责。
