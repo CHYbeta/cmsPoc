@@ -22,7 +22,7 @@ def poc():
 						"cmd": payload,
 					}
 					r = requests.post(target.url,data=postdata)
-					print r.text[:r.text.find("<!DOCTYPE html>")]
+					print r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding)
 				else:
 					flag = 0
 			except EOFError as e:

