@@ -1,9 +1,9 @@
+# -*- encoding:"utf-8"-*-
 from lib.core.data import target,path
 from lib.parse.cmdline import cmdLineParser
 from lib.core.common import banner
 from lib.controllor.task import loadScripts
 from lib.controllor.task import runPoc,autoPoc
-# from lib.controllor.init import initPath,
 from lib.controllor.task import start
 import requests
 
