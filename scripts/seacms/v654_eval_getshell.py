@@ -25,11 +25,11 @@ def poc():
 					}
 
 					r = requests.post(target.url,data=postdata)
-					print r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding)
+					print(r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding))
 				else:
 					break
 			except EOFError as e:
-				print "[*] type 'exit' to quit"
+				print("[*] type 'exit' to quit")
 				pass
 	except KeyError as e:
 		print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
