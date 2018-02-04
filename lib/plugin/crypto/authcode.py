@@ -3,6 +3,7 @@ import time
 import base64
 import hashlib
 
+
 class AuthCode(object):
 
     @classmethod
@@ -61,7 +62,7 @@ class AuthCode(object):
             tmp = box[a]
             box[a] = box[j]
             box[j] = tmp
-            result += chr(ord(handled_string[i])^(box[(box[a]+box[j])%256]))
+            result += chr(ord(handled_string[i]) ^ (box[(box[a] + box[j]) % 256]))
 
         if operation == 'DECODE':
             if (int(result[:10]) == 0 or (int(result[:10]) - time.time() > 0)) and \
