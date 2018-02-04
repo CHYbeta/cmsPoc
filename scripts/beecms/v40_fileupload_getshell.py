@@ -1,7 +1,9 @@
-from lib.core.data import target
-import urlparse
-import requests
 import re
+import urlparse
+
+import requests
+
+from lib.core.data import target
 
 
 def poc():
@@ -56,7 +58,6 @@ def poc():
                 print("[*] type 'exit' to quit")
                 pass
 
-        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
     except KeyError as e:
         print(
             "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"

