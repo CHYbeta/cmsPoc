@@ -1,51 +1,46 @@
-import os
-import imp
+from lib.controllor.controllor import load_poc, run_poc
+from lib.core.common import begin_time_info, end_time_info, get_script_path
 from lib.core.data import target
-from lib.core.data import path
-from lib.core.init import init_path, init_target_info
-from lib.plugin.other.findweb import whatweb
-from controllor import begin_time_info, end_time_info
 
 
-def start():
-    begin_time_info()
-    if target.type is not None:
-        if target.script is not None:
-            init_path()
-            init_target_info()
-            run_poc(load_script())
-        else:
-            init_path()
-            autopoc()
-    elif target.script is None:
-        try_find_type()
-        autopoc()
-    else:
-        print("set the type")
-    end_time_info()
+class Task:
+    def __init__(self, target):
+        self.url = target.url
+        self.type = target.type
+        self.poc_name = target.script
+        self.poc_path = get_script_path() + self.type
+        self.poc = load_poc(self.poc_name, [self.poc_path])
+        self.begin_time = begin_time_info()
 
+    def info(self):
+        print("\033[33m[*] The target url: {} \033[0m".format(self.url))
+        print("\033[33m[*] The target type: {} \033[0m".format(self.type))
+        print("\033[33m[*] Try to load the script: {} \033[0m".format(
+            self.poc_name))
 
-def load_script():
-    try:
-        file_name, path_name, description = imp.find_module(
-            os.path.splitext(target.script)[0],
-            [path.SCRIPTS_PATH + target.type])
-    except ImportError as e:
-        print(
-            "\033[31m[!] Import script error.Please make sure the script name and type name are right!\033[0m\n"
-        )
-        exit()
-    script = imp.load_module('poc', file_name, path_name, description)
-    return script
+    def run(self):
+        if target.type is not None:
+            if target.script is not None:
 
+                if run_poc(self.poc):
+                    self.status = "Success"
+                else:
+                    self.status = "Fail"
 
-def run_poc(script):
-    script.poc()
+    def log(self):
+        try:
+            with open('log/log.csv', 'a') as f:
+                self.record = "%s,%s,%s,%s,%s,%s\n" % (self.url, self.type,
+                                                       self.poc_name,
+                                                       self.status,
+                                                       self.begin_time,
+                                                       self.end_time)
+                f.write(self.record)
+                print("\033[33m[*] Log save at log/log.csv\033[0m")
+        except Exception:
+            print("\033[31m[!] Log save errors!\033[0m\n")
 
-
-def auto_poc():
-    print("autopoc")
-
-
-def try_find_type():
-    whatweb()
+    def end(self):
+        print("\033[33m[*] Complete this task: {} \033[0m".format(self.url))
+        self.end_time = end_time_info()
+        self.log()
