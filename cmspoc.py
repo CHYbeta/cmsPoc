@@ -20,7 +20,8 @@ def cli():
         print("\033[31m[!] The network is busy.Connection error!\033[0m\n")
     except KeyboardInterrupt:
         print("\033[31m[!] User aborted!\033[0m\n")
-
+    except Exception:
+        print("\033[31m[!] Somethins error. exit.")
 
 if __name__ == "__main__":
     cli()

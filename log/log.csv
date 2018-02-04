@@ -1,0 +1,2 @@
+url,type,poc-name,status,begin-time,end-time
+http://127.0.0.1/BEES_V4.0_R_20160525/index.php,beecms,v40_fileupload_getshell,Success,2018-02-04 22:00:43,2018-02-04 22:00:50
