@@ -13,9 +13,9 @@ def load_poc(poc_name, poc_path):
     return script
 
 
-def run_poc(script):
+def run_poc(script,url):
     try:
-        script.poc()
+        script.poc(url)
         return True
     except Exception:
         return False

@@ -21,8 +21,7 @@ class Task:
     def run(self):
         if target.type is not None:
             if target.script is not None:
-
-                if run_poc(self.poc):
+                if run_poc(self.poc, self.url):
                     self.status = "Success"
                 else:
                     self.status = "Fail"
