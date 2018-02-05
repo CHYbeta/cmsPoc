@@ -3,7 +3,7 @@ from urllib import urlencode
 import requests
 
 from lib.core.data import target
-from lib.plugin.crypto.authcode import AuthCode
+from plugin.algorithm.authcode import AuthCode
 
 
 def poc():
