@@ -3,7 +3,8 @@
 
 注意：2.0版本的poc库还未更新相应接口，无法调用。若需使用，建议先使用1.0版本。
 
-# cmsPoc 1.0 [![Python 2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/)
+# cmsPoc 1.0 
+[![Python 2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/)
 ![License](https://img.shields.io/badge/license-GPLv2-red.svg)
 
 ## Requirements
