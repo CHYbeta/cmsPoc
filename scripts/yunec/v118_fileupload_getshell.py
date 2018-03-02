@@ -42,4 +42,7 @@ def poc(url):
         shell_manage.post_manage()
 
     except Exception:
+        print(
+            "\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m"
+        )
         pass

